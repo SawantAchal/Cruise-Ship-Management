@@ -45,11 +45,11 @@ import React, { useContext } from 'react';
 import { StoreContext } from '../context/StoreContext';
 
 const ItemCard = ({ id, name, category, image, price, description }) => {
-    const { cartItems, addToCart, removeFromCart } = useContext(StoreContext);
+    const { cartItems, addToCart, removeFromCart ,url} = useContext(StoreContext);
 
     return (
         <div className="border border-gray-300 rounded-lg shadow-lg overflow-hidden cursor-pointer transition-transform transform hover:scale-105">
-            <img src={image} alt={name} className="w-full h-48 object-cover" />
+            <img src={url+'/images/'+image} alt={name} className="w-full h-48 object-cover" />
             <div className="p-4">
                 <h2 className="text-lg font-semibold text-gray-800 mb-2">{name}</h2>
                 <p className="text-sm text-gray-600 mb-4">{description}</p>

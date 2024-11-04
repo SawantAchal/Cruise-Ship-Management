@@ -47,21 +47,46 @@
 // };
 
 // export default Login;
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
+import { StoreContext } from '../context/StoreContext';
+import axios from 'axios'
 
 const Login = () => {
     const [currentState, setCurrentState] = useState('login');
-    const [name, setName] = useState('');
-    const [password, setPassword] = useState('');
-    const [email, setEmail] = useState('');
-    const [mobile, setMobile] = useState('');
+    // const [name, setName] = useState('');
+    // const [password, setPassword] = useState('');
+    // const [email, setEmail] = useState('');
+    // const [mobile, setMobile] = useState('');
+    const {url , token , setToken} = useContext(StoreContext)
+    const [data , setData] = useState({
+        name:'',
+        email:'',
+        mobile:'',
+        password:''
+    })
 
-    const onSubmitHandler = (e) => {
+    const onChangeHandler = (e) => {
+        const name = e.target.name;
+        const value = e.target.value;
+        setData(data=>({...data,[name]:value}))
+    }
+
+    const onSubmitHandler = async(e) => {
         e.preventDefault();
-        if (currentState === 'signup') {
-            console.log("Sign data", { name, email, mobile, password });
+        let newUrl = url;
+        if (currentState === 'login') {
+            newUrl += '/api/user/login'
+            // console.log("Login data", { name, password });
         } else {
-            console.log("Login data", { name, password });
+            newUrl += '/api/user/register'
+            // console.log("Sign data", { name, email, mobile, password });
+        }
+        const response = await axios.post(newUrl , data);
+        if (response.data.success) {
+            setToken(response.data.token)
+            localStorage.setItem("cruise token" , response.data.token)
+        }else{
+            alert(response.data.message)
         }
     };
 
@@ -73,17 +98,19 @@ const Login = () => {
                     currentState === 'login' ? null :
                         <>
                             <input 
-                                onChange={(e) => setEmail(e.target.value)} 
-                                value={email} 
+                                onChange={onChangeHandler} 
+                                value={data.email} 
                                 type='email' 
+                                name='email'
                                 placeholder='Enter Email' 
                                 required 
                                 className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-200"
                             />
                             <input 
-                                onChange={(e) => setMobile(e.target.value)} 
-                                value={mobile} 
+                                onChange={onChangeHandler}  
+                                value={data.mobile} 
                                 type='tel' 
+                                name='mobile'
                                 placeholder='Enter Mobile No.' 
                                 required 
                                 className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-200"
@@ -91,17 +118,19 @@ const Login = () => {
                         </>
                 }
                 <input 
-                    onChange={(e) => setName(e.target.value)} 
-                    value={name} 
+                name='name'
+                   onChange={onChangeHandler}  
+                    value={data.name} 
                     type='text' 
                     placeholder='Username' 
                     required 
                     className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-200"
                 />
                 <input 
-                    onChange={(e) => setPassword(e.target.value)} 
-                    value={password} 
+                    onChange={onChangeHandler}  
+                    value={data.password} 
                     type='password' 
+                    name='password'
                     placeholder='Password' 
                     required 
                     className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-200"

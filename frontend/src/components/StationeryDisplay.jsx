@@ -4,7 +4,7 @@
 // import ItemCard from './ItemCard'
 
 // const StationeryDisplay = ({category , setCategory}) => {
-//     const {stationeryMenu} = useContext(StoreContext)
+//     const {stationeryData} = useContext(StoreContext)
 
 //     useEffect(() => {
 //         console.log("Stationery Category:", category);
@@ -31,7 +31,7 @@
 //             <div>
 //                 <div>
 //                     {
-//                         stationeryMenu.map((stationeryItem , index) => {
+//                         stationeryData.map((stationeryItem , index) => {
 //                             if (category==='All' || category.toLowerCase()===stationeryItem.category.toLowerCase()) {
 //                                 return <ItemCard key={index} id={stationeryItem._id} name={stationeryItem.name} description={stationeryItem.description} image={stationeryItem.image} price={stationeryItem.price} category={stationeryItem.category}/>
 //                             }
@@ -53,7 +53,7 @@ import { stationery } from '../assets/menuData';
 import ItemCard from './ItemCard';
 
 const StationeryDisplay = ({ category, setCategory }) => {
-    const { stationeryMenu } = useContext(StoreContext);
+    const { stationeryData } = useContext(StoreContext);
 
     useEffect(() => {
         console.log("Stationery Category:", category);
@@ -78,7 +78,7 @@ const StationeryDisplay = ({ category, setCategory }) => {
             </div>
             <div className="mt-6 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
                 {
-                    stationeryMenu.map((stationeryItem, index) => {
+                    stationeryData.map((stationeryItem, index) => {
                         if (category === 'All' || category.toLowerCase() === stationeryItem.category.toLowerCase()) {
                             return (
                                 <ItemCard 

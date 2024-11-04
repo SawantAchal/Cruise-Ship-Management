@@ -33,12 +33,21 @@
 // }
 
 // export default Navbar
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { CiShoppingCart } from "react-icons/ci";
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import { StoreContext } from '../context/StoreContext';
 
 const Navbar = () => {
     const [menu, setMenu] = useState();
+    const {token , setToken} = useContext(StoreContext)
+    const navigate = useNavigate()
+
+    const logout = () => {
+        localStorage.removeItem("cruise token");
+        setToken("")
+        navigate('/')
+    }
 
     return (
         <nav className="bg-gradient-to-r from-green-400 to-teal-500 text-white shadow-md fixed w-full z-50">
@@ -71,9 +80,10 @@ const Navbar = () => {
                         <CiShoppingCart className="text-2xl" />
                         <div className='absolute -top-1 -right-2 bg-pink-500 h-3 w-3 rounded-full'></div>
                     </Link>
-                    <button className="ml-4 p-2 rounded-full bg-white text-teal-600 hover:bg-gray-200 focus:outline-none transition duration-300">
+                    <Link to={'/login'}><button className="ml-4 p-2 rounded-full bg-white text-teal-600 hover:bg-gray-200 focus:outline-none transition duration-300">
                         Sign In
-                    </button>
+                    </button></Link>
+                    <button onClick={logout}>Logout</button>
                 </div>
             </div>
         </nav>

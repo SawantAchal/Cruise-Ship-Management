@@ -68,7 +68,7 @@ const stationery = [
     },
 ]
 
-const stationeryMenu = [
+const stationeryData = [
     {
       "_id": 6,
       "name": "Elegant Pen Set",
@@ -151,4 +151,4 @@ const stationeryMenu = [
     }
 ]
 
-export  {menuData , exploreMenu ,stationery ,stationeryMenu}
+export  {menuData , exploreMenu ,stationery ,stationeryData}
