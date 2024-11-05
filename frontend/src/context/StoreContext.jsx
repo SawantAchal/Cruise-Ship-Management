@@ -39,10 +39,10 @@ const StoreContextProvider  = (props) => {
         if (cartItems[item] > 0) {
           let itemInfo = combinedMenu.find((product) => product._id === (item))
           // Only add to total if `itemInfo` is found
-          totalAmount += itemInfo.price*cartItems[item];
-          // if (itemInfo) {
-          //   totalAmount += itemInfo.price*cartItems[item];
-          // }
+          // totalAmount += itemInfo.price*cartItems[item];
+          if (itemInfo) {
+            totalAmount += itemInfo.price*cartItems[item];
+          }
         }
       }
     return totalAmount;
@@ -71,17 +71,30 @@ const StoreContextProvider  = (props) => {
     setCartItems(response.data.cartData)
   }
     //presist from logout the user after refresh
+    // useEffect(() => {
+    //   async function loadData() {
+    //     await fetchMenuList();
+    //     await fetchStationeryList()
+    //     if (localStorage.getItem('cruise token')) {
+    //       setToken(localStorage.getItem('cruise token'))
+    //       await loadCartData(localStorage.getItem('cruise token'))
+    //     }
+    //   }
+    //   loadData()
+    // },[])
     useEffect(() => {
       async function loadData() {
-        await fetchMenuList();
-        await fetchStationeryList()
-        if (localStorage.getItem('cruise token')) {
-          setToken(localStorage.getItem('cruise token'))
-          await loadCartData(localStorage.getItem('cruise token'))
-        }
+          await fetchMenuList();
+          await fetchStationeryList();
+          const storedToken = localStorage.getItem('cruise token');
+          if (storedToken) {
+              setToken(storedToken);
+              await loadCartData(storedToken);
+          }
       }
-      loadData()
-    },[])
+      loadData();
+  }, []);
+  
 
   const contextValue = {
     addToCart ,

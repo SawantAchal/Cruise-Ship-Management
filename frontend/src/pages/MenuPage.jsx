@@ -2,12 +2,12 @@ import React from 'react';
 import MenuDisplay from '../components/MenuDisplay';
 import ExploreMenu from '../components/ExploreMenu';
 
-const MenuPage = () => {
+const MenuPage = ({category , setCategory}) => {
   return (
     <>
       <main >
         <ExploreMenu category={category} setCategory={setCategory}/>  
-        <MenuDisplay/>
+        <MenuDisplay category={category} setCategory={setCategory}/>
       </main>
     </>
   );

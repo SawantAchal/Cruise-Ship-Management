@@ -1,60 +1,29 @@
-// import React, { useState } from 'react'
-// import { CiShoppingCart } from "react-icons/ci";
-// import { Link } from 'react-router-dom';
-// const Navbar = () => {
-//     const [menu , setMenu] = useState()
-//   return (
-//     <>
-//         <nav className="bg-blue-600 text-white shadow-md fixed w-full z-50">
-//             <div className="container mx-auto flex justify-between items-center p-4">
-//                 <div>
-//                     <p>CuriseShip</p>
-//                 </div>
-//                 <div className=" md:flex space-x-6">
-//                     <p> <a href="#menu" onClick={() => setMenu('menu')} className={menu === 'menu' ? 'active' : ''}>Menu</a></p>
-//                     <p><a href="#stationery" onClick={() => setMenu('stationery')} className={menu === 'stationery' ? 'active' : ''}>Stationery</a></p>
-//                     <p> <a href="#movies"onClick={() => setMenu('movies')} className={menu === 'movies' ? 'active' : ''} >Movies</a></p>
-//                     <p><a href="#beauty" onClick={() => setMenu('beauty')} className={menu === 'beauty' ? 'active' : ''}>Beauty</a></p>
-//                     <p><a href="#fitness"onClick={() => setMenu('fitness')} className={menu === 'fitness' ? 'active' : ''}>Fitness</a></p>
-//                     <p><a href="#party" onClick={() => setMenu('party')} className={menu === 'party' ? 'active' : ''}>Party</a></p>
-//                 </div>
-//                 <div className='flex'>
-//                 <Link to={'/cart-page'}>
-//                     <CiShoppingCart/></Link>
-//                     <div className='bg-pink-500 h-3 w-3 rounded-full'></div>
-//                     <button className="p-2 rounded-full bg-white text-blue-600 hover:bg-gray-200 focus:outline-none">
-//                         sign in
-//                     </button>
-//                 </div>
-//             </div>
-//         </nav>
-//     </>
-//   )
-// }
-
-// export default Navbar
 import React, { useContext, useState } from 'react';
-import { CiShoppingCart } from "react-icons/ci";
 import { Link, useNavigate } from 'react-router-dom';
 import { StoreContext } from '../context/StoreContext';
+import { CgProfile } from "react-icons/cg";
 
 const Navbar = () => {
     const [menu, setMenu] = useState();
-    const {token , setToken} = useContext(StoreContext)
-    const navigate = useNavigate()
+    const { setToken  , token} = useContext(StoreContext);
+    const navigate = useNavigate();
 
     const logout = () => {
         localStorage.removeItem("cruise token");
-        setToken("")
-        navigate('/')
-    }
+        setToken("");
+        navigate('/');
+    };
 
     return (
         <nav className="bg-gradient-to-r from-green-400 to-teal-500 text-white shadow-md fixed w-full z-50">
-            <div className="container mx-auto flex justify-between items-center p-4">
-                <div>
+            {
+                !token ? '' :             <div className="container mx-auto flex justify-between items-center p-4">
+                {/* Logo */}
+                <Link to={'/home-page'}>
                     <p className="text-2xl font-bold">CruiseShip</p>
-                </div>
+                </Link>
+
+                {/* Menu Links */}
                 <div className="md:flex space-x-8">
                     <p>
                         <a href="#menu" onClick={() => setMenu('menu')} className={`transition duration-300 ${menu === 'menu' ? 'font-semibold underline' : ''}`}>Menu</a>
@@ -75,17 +44,23 @@ const Navbar = () => {
                         <a href="#party" onClick={() => setMenu('party')} className={`transition duration-300 ${menu === 'party' ? 'font-semibold underline' : ''}`}>Party</a>
                     </p>
                 </div>
-                <div className='flex items-center'>
-                    <Link to={'/cart-page'} className="relative">
-                        <CiShoppingCart className="text-2xl" />
-                        <div className='absolute -top-1 -right-2 bg-pink-500 h-3 w-3 rounded-full'></div>
-                    </Link>
-                    <Link to={'/login'}><button className="ml-4 p-2 rounded-full bg-white text-teal-600 hover:bg-gray-200 focus:outline-none transition duration-300">
-                        Sign In
-                    </button></Link>
-                    <button onClick={logout}>Logout</button>
+
+                {/* Profile and Cart Icons */}
+                <div className='flex items-center gap-4'>
+                    {/* Profile Dropdown */}
+                    <div className="relative group">
+                        {/* Profile Icon */}
+                        <CgProfile/>
+                        <ul className='absolute hidden z-10 right-3 group-hover:flex group-hover:flex-col group-hover:p-3 gap-2 bg-white shadow-md rounded border border-solid text-black border-red-500 outline-2 outline-none outline-white w-28'>
+                            <li onClick={() => navigate('/cart-page')} className='flex items-center gap-2 cursor-pointer hover:text-red-500'>cart</li>
+                            <li onClick={logout}>logout</li>
+                            <li onClick={() => navigate('/profile')}>profile</li>
+                        </ul>
+                    </div>
                 </div>
             </div>
+            }
+
         </nav>
     );
 };

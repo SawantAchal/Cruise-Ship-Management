@@ -50,13 +50,10 @@
 import React, { useContext, useState } from 'react';
 import { StoreContext } from '../context/StoreContext';
 import axios from 'axios'
+import { useNavigate } from 'react-router-dom';
 
 const Login = () => {
     const [currentState, setCurrentState] = useState('login');
-    // const [name, setName] = useState('');
-    // const [password, setPassword] = useState('');
-    // const [email, setEmail] = useState('');
-    // const [mobile, setMobile] = useState('');
     const {url , token , setToken} = useContext(StoreContext)
     const [data , setData] = useState({
         name:'',
@@ -64,6 +61,7 @@ const Login = () => {
         mobile:'',
         password:''
     })
+    const navigate = useNavigate()
 
     const onChangeHandler = (e) => {
         const name = e.target.name;
@@ -83,8 +81,10 @@ const Login = () => {
         }
         const response = await axios.post(newUrl , data);
         if (response.data.success) {
-            setToken(response.data.token)
+            
             localStorage.setItem("cruise token" , response.data.token)
+            setToken(response.data.token)
+            navigate('/home-page')
         }else{
             alert(response.data.message)
         }
