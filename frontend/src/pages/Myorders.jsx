@@ -9,7 +9,7 @@ const Myorders = () => {
     const fetchUserOrder = async () => {
         const res = await axios.post(url+'/api/order/user-orders' , {} , {headers:{token}});
         setData(res.data.data)
-        console.log(res.data.data)
+        // console.log(res.data.data)
     }
 
     useEffect(() => {

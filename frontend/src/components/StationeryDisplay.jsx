@@ -56,7 +56,7 @@ const StationeryDisplay = ({ category, setCategory }) => {
     const { stationeryData } = useContext(StoreContext);
 
     useEffect(() => {
-        console.log("Stationery Category:", category);
+        // console.log("Stationery Category:", category);
     }, [category]);
 
     return (

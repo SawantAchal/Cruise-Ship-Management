@@ -7,7 +7,7 @@ const VerifyOrder = () => {
     const [serachParams , setSearchParams] = useSearchParams()
     const success = serachParams.get('success');
     const orderId = serachParams.get('orderId');
-    console.log("success", success, orderId)
+    // console.log("success", success, orderId)
     const {url} = useContext(StoreContext)
     const navigate = useNavigate()
 

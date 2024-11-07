@@ -6,6 +6,7 @@ const userSchema = new mongoose.Schema({
     mobile:{type:Number , required:true , unique:true},
     password:{type:String , required:true },
     cartData:{type:Object , default:{}},
+    bookedMovies:{type:Object , default:{}},
     createdAt: { type: Date, default: Date.now, immutable: true }
 },{minimize:false})
 

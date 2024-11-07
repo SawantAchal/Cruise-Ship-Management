@@ -1,4 +1,4 @@
-import React, { Children, useContext, useEffect, useState } from 'react'
+import React, {  useContext, useEffect, useState } from 'react'
 import { StoreContext } from '../context/StoreContext'
 import axios from 'axios'
 
@@ -19,11 +19,11 @@ const PlaceOrder = () => {
   }
 
   useEffect(() => {
-    console.log("place order " ,data)
+    // console.log("place order " ,data)
   },[data])
 
   useEffect(() => {
-    console.log("Cart Items:", cartItems);
+    // console.log("Cart Items:", cartItems);
   }, [cartItems]);
 
   const placeOrder = async(e) => {
@@ -37,7 +37,7 @@ const PlaceOrder = () => {
         orderItems.push(itemInfo)
       }
     })
-    console.log("order items" ,orderItems)
+    // console.log("order items" ,orderItems)
     let orderData = {
       roomNo:data.roomNo,
       items:orderItems,

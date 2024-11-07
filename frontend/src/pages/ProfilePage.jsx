@@ -10,7 +10,7 @@ const ProfilePage = () => {
 
   const fetchUserDetails = async () => {
     const response = await axios.get(url + '/api/user/info-user' ,{headers:{token}})
-    console.log('user prfile' , response.data)
+    // console.log('user prfile' , response.data)
     if (response.data.success) {
       setProfile(response.data.data)
     } else {

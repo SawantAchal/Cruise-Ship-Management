@@ -49,9 +49,9 @@ const StoreContextProvider  = (props) => {
   }
 
   useEffect(() => {
-    console.log('cartItems' , cartItems)
-    console.log("Menu Data:", menuData);
-    console.log("Stationery Data:", stationeryData);
+    // console.log('cartItems' , cartItems)
+    // console.log("Menu Data:", menuData);
+    // console.log("Stationery Data:", stationeryData);
   },[cartItems])
 
 
@@ -95,6 +95,21 @@ const StoreContextProvider  = (props) => {
       loadData();
   }, []);
   
+  //for movie booking
+  const [selectedMovie, setSelectedMovie] = useState(null);
+  const [selectedShowtime, setSelectedShowtime] = useState('');
+  const [selectedSeats, setSelectedSeats] = useState([]);
+  const [ticketPrice, setTicketPrice] = useState(0);
+  const [movies, setMovies] = useState([]);
+
+  const fetchMovies = async() => {
+    const response = await axios.get(url+'/api/movie/all-movie')
+    setMovies(response.data.data)
+  }
+
+  useEffect(() => {
+    fetchMovies()
+  },[])
 
   const contextValue = {
     addToCart ,
@@ -107,7 +122,17 @@ const StoreContextProvider  = (props) => {
     combinedMenu,
     url,
     token,
-    setToken
+    setToken,
+    selectedMovie, 
+    setSelectedMovie,
+    selectedShowtime,
+    setSelectedShowtime,
+    selectedSeats,
+    setSelectedSeats,
+    ticketPrice, 
+    setTicketPrice,
+    movies,
+    setMovies
   }
 
   return (

@@ -87,4 +87,20 @@ const allUserList = async(req, res) => {
     }
 }
 
-export {loginUser , registerUser ,allUserList}
+// information of particular user
+const inforOfuser = async (req, res) => {
+    console.log('logg')
+    const { userId } = req.body; // If using POST request or req.query.userId if using GET request
+    try {
+        const user = await userModel.findOne({ _id: userId });
+        if (!user) {
+            return res.status(404).json({ success: false, message: 'User not found' });
+        }
+        res.status(200).json({ success: true, data: user });
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ success: false, message: error.message });
+    }
+};
+
+export {loginUser , registerUser ,allUserList , inforOfuser}

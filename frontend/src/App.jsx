@@ -32,7 +32,7 @@ function App() {
         <Route path='/book-movie' element={<BookMovie/>}/>
         </>
 }
-        {}
+        
 
       </Routes>
     </>
