@@ -13,12 +13,10 @@ import timeSlotRoute from './routes/timeSlotRoutes.js';
 import bookingRoute from './routes/bookingRoutes.js';
 import MovieRoutes from './routes/movieRoutes.js';
 import movieBookingRoutes from './routes/movieBookingRoutes.js';
-// import movieRoutes from './routes/movieRoutes.js';
-// import bookingRoutes from './routes/bookingRoutes.js';
 
 //App config
 const app = express()
-const port = 4000 ;
+const port = process.env.PORT || 4000;
 
 //middleware
 app.use(express.json())
