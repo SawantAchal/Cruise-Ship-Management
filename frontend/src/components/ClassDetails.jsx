@@ -82,8 +82,7 @@ const ClassDetails = () => {
     }
   };
 
-  if (loading) return <div>Loading...</div>;
-  if (error) return <div className="text-red-500">{error}</div>;
+  
 
   return (
     <div className="p-6 pt-36">

@@ -8,7 +8,6 @@ import { toast } from 'react-toastify';
 const MovieDetails = () => {
   const { id } = useParams(); 
   const [movie, setMovie] = useState(null);
-  const [loading, setLoading] = useState(true);
   const { url } = useContext(StoreContext);
 
   const fetchMovieDetails = async () => {
@@ -18,7 +17,7 @@ const MovieDetails = () => {
     } catch (error) {
       toast.error('Error fetching movie details:', error);
     } finally {
-      setLoading(false);
+
     }
   };
     
@@ -26,13 +25,7 @@ const MovieDetails = () => {
     fetchMovieDetails();
   }, [id]);
     
-  if (loading) {
-    return (
-      <div className="flex justify-center items-center min-h-screen">
-        <div className="spinner-border animate-spin rounded-full h-32 w-32 border-b-4 border-blue-600"></div>
-      </div>
-    );
-  }
+
     
   if (!movie) {
     return (

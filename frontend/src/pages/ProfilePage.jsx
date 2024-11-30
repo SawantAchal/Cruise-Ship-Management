@@ -34,7 +34,7 @@ const ProfilePage = () => {
   if (loading) {
     return (
       <div className="flex justify-center items-center h-screen">
-        <div className="text-xl text-gray-500">Loading...</div> {/* Show loading state */}
+        <div className="text-xl text-gray-500">Loading...</div> 
       </div>
     )
   }
