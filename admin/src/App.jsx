@@ -14,6 +14,9 @@ import AllUsers from './pages/AllUsers'
 import AllOrders from './pages/AllOrders'
 import MovieManagement from './pages/MovieManagement'
 import BookingManagement from './pages/BookingManagement'
+import EquipmentManagement from './components/EquipmentManagement'
+import TimeSlotManagement from './components/TimeSlotManagement'
+import FitnessCenter from './pages/FitnessCenter'
 
 function App() {
   const url = 'https://cruise-ship-management.onrender.com'
@@ -37,6 +40,9 @@ function App() {
             <Route path="/usersAll-orders" element={<AllOrders url={url} />} />
             <Route path="/movies" element={<MovieManagement url={url} />} />
             <Route path="/bookings" element={<BookingManagement url={url} />} />
+            <Route path="/equipment-management" element={<EquipmentManagement fitnessCenterId="6749955287aebbcd1c1de2bc" url={url}/>} />
+            <Route path="/time-slot-management" element={<TimeSlotManagement fitnessCenterId="6749955287aebbcd1c1de2bc" url={url}/>} />
+            <Route path="/fitness-center" element={<FitnessCenter  url={url}/>} />
           </Routes>
         </div>
       </div>

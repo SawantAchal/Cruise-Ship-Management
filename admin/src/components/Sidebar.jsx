@@ -3,7 +3,7 @@ import { NavLink } from 'react-router-dom';
 
 const Sidebar = () => {
   return (
-    <aside className="pt-44 w-64 h-screen bg-gray-800 text-white fixed">
+    <aside className="pt-20 w-64 h-screen bg-gray-800 text-white fixed">
       <div className="flex flex-col space-y-4 p-4">
       <NavLink to={'/all-users'} className="hover:text-gray-300 transition duration-200">
           <p>All users</p>
@@ -37,6 +37,16 @@ const Sidebar = () => {
         </NavLink>
         <NavLink to={'/bookings'} className="hover:text-gray-300 transition duration-200">
           <p>Manage Bookings</p>
+        </NavLink>
+        <hr/>
+        <NavLink to={'/equipment-management'} className="hover:text-gray-300 transition duration-200">
+          <p>Manage Equipments</p>
+        </NavLink>
+        <NavLink to={'/time-slot-management'} className="hover:text-gray-300 transition duration-200">
+          <p>Manage Time Slots</p>
+        </NavLink>
+        <NavLink to={'/fitness-center'} className="hover:text-gray-300 transition duration-200">
+          <p>Manage Fitness Centers</p>
         </NavLink>
       </div>
     </aside>
