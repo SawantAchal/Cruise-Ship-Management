@@ -32,14 +32,11 @@ const Sidebar = () => {
           <p>Stationery Orders</p>
         </NavLink>
         <hr/>
-        <NavLink to={'/add-movie'} className="hover:text-gray-300 transition duration-200">
-          <p>Add movie</p>
+        <NavLink to={'/movies'} className="hover:text-gray-300 transition duration-200">
+          <p>Manage Movies</p>
         </NavLink>
-        <NavLink to={'/all-movies'} className="hover:text-gray-300 transition duration-200">
-          <p>All movies</p>
-        </NavLink>
-        <NavLink to={'/all-BookedMovies'} className="hover:text-gray-300 transition duration-200">
-          <p>All booked movies</p>
+        <NavLink to={'/bookings'} className="hover:text-gray-300 transition duration-200">
+          <p>Manage Bookings</p>
         </NavLink>
       </div>
     </aside>
