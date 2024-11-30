@@ -5,6 +5,7 @@ import {useNavigate} from 'react-router-dom'
 const CartPage = () => {
   const { cartItems ,  removeFromCart ,getCartTotalAmount ,combinedMenu, url} = useContext(StoreContext);
   const navigate = useNavigate()
+
   return (
     <div className="container mx-auto px-4 pt-24">
       <main className="mb-12">
@@ -54,10 +55,6 @@ const CartPage = () => {
               <p>{getCartTotalAmount()}</p>
             </div>
             <hr/>
-            {/* <div className="flex justify-between text-gray-600">
-              <p>delivery charges</p>
-              <p>{getCartTotalAmount()===0?0:''}</p>
-            </div> */}
             {/* <hr/> */}
             <div className="flex justify-between font-bold text-gray-800 text-lg">
               <b>Total</b>

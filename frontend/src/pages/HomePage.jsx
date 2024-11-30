@@ -5,7 +5,7 @@ import Header from '../components/Header'
 import ExploreMenu from '../components/ExploreMenu'
 import MenuDisplay from '../components/MenuDisplay'
 import StationeryDisplay from '../components/StationeryDisplay'
-import MovieBookingPage from './MovieBookingPage'
+import Classes from '../components/Classes'
 
 const HomePage = () => {
   const [category , setCategory] = useState("All")
@@ -19,7 +19,7 @@ const HomePage = () => {
         <ExploreMenu category={category} setCategory={setCategory}/>
         <MenuDisplay category={category}/>
         <StationeryDisplay category={stationeryCategory} setCategory={setStationeryCategory} />
-        <MovieBookingPage/>
+        <Classes/>
     </>
   )
 }

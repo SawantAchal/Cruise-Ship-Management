@@ -99,17 +99,30 @@ const StoreContextProvider  = (props) => {
   const [selectedMovie, setSelectedMovie] = useState(null);
   const [selectedShowtime, setSelectedShowtime] = useState('');
   const [selectedSeats, setSelectedSeats] = useState([]);
-  const [ticketPrice, setTicketPrice] = useState(0);
-  const [movies, setMovies] = useState([]);
+  const [totalAmount, setTotalAmount] = useState(0);
 
-  const fetchMovies = async() => {
-    const response = await axios.get(url+'/api/movie/all-movie')
-    setMovies(response.data.data)
-  }
+  // const fetchMovies = async() => {
+  //   const response = await axios.get(url+'/api/movie/all-movie')
+  //   setMovies(response.data.data)
+  // }
 
-  useEffect(() => {
-    fetchMovies()
-  },[])
+  // useEffect(() => {
+  //   fetchMovies()
+  // },[])
+
+
+
+
+
+
+  // for fitness 
+  const [user, setUser] = useState(null); // Store user info
+  const [selectedClass, setSelectedClass] = useState(null); // Store selected class
+  const [bookings, setBookings] = useState([]); // Store user bookings
+
+  const addBooking = (newBooking) => {
+    setBookings((prev) => [...prev, newBooking]);
+  };
 
   const contextValue = {
     addToCart ,
@@ -129,10 +142,18 @@ const StoreContextProvider  = (props) => {
     setSelectedShowtime,
     selectedSeats,
     setSelectedSeats,
-    ticketPrice, 
-    setTicketPrice,
-    movies,
-    setMovies
+    totalAmount, 
+    setTotalAmount,
+
+    //fitness
+    selectedClass,
+    setSelectedClass,
+    bookings, 
+    setBookings,
+    user, 
+    setUser,
+    addBooking
+
   }
 
   return (
@@ -143,4 +164,3 @@ const StoreContextProvider  = (props) => {
 };
 
 export default StoreContextProvider
-
