@@ -11,7 +11,6 @@ const AllOrders = ({url}) => {
         const res = await axios.get(url+'/api/order/allUserOrders')
         if (res.data.success) {
             setorders(res.data.data)
-            console.log(res.data.data)
         }else{
             toast.error('error')
         }
@@ -25,12 +24,12 @@ const AllOrders = ({url}) => {
         if (response.data.success) {
             await fetchAllUsersOrders();
         }
-        console.log(e, orderId)
     }
 
     useEffect(() => {
         fetchAllUsersOrders()
     },[])
+
   return (
     <>
 
@@ -79,25 +78,3 @@ const AllOrders = ({url}) => {
 }
 
 export default AllOrders
-
-        {/* <div className='ml-28'>
-            <h1>All orders from user (menu , stationert )</h1>
-            <div>
-                {
-                    orders.map((order , index) => (
-                        <div key={index}>
-                            <p>{order.items.map((item , idx) => {
-                                if (idx === order.items.length-1) {
-                                    return item.name + ' X ' + item.quantity
-                                }else{
-                                    return item.name + ' X ' + item.quantity + " ,"
-                                }
-                            })}</p>
-                            <p>Room no .{order.roomNo}</p>
-                            <p>Category : {order.category}</p>
-                            <p>amount : {order.item.price}</p>
-                        </div>
-                    ))
-                }
-            </div>
-        </div> */}

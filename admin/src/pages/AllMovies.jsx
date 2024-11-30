@@ -8,7 +8,6 @@ const AllMovies = ({url}) => {
   const fetchAllMovies = async () => {
     try {
       const response = await axios.get(`${url}/api/movie/all-movie`);
-      console.log('All movies: ', response.data);
       if (response.data.success) {
         setAllMovies(response.data.data);
       } else {

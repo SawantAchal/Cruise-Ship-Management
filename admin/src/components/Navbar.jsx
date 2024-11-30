@@ -1,23 +1,3 @@
-// import React from 'react'
-
-// const Navbar = () => {
-//   return (
-//     <>
-//         <nav className='fixed bg-gray-900 w-full h-11 flex justify-center items-center'>
-//             <div>
-//                 <h1>Achal Sawant</h1>
-//             </div>
-//             <div className='flex gap-8'>
-//                 <p>Menu</p>
-//                 <p>Stationery</p>
-//             </div>
-//         </nav>
-//     </>
-//   )
-// }
-
-// export default Navbar
-
 import React from 'react'
 
 const Navbar = () => {

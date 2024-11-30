@@ -9,7 +9,6 @@ const AllMovieBookings = ({url}) => {
         const res = await axios.get(url+'/api/bookedMovie/allusers-MoviedMovies')
         if (res.data.success) {
             setAllMovieBookings(res.data.data)
-            console.log(res.data.data)
         }else{
             toast.error('error')
         }

@@ -6,7 +6,6 @@ const AllUsers = ({url}) => {
 
     const fetchAllUsers = async() => {
         const response = await axios.get(`${url}/api/user/all-user`)
-        console.log(response.data)
         if (response.data.success) {
             setAllUserList(response.data.data)
         }else{

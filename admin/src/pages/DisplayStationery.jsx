@@ -1,68 +1,3 @@
-// import axios from 'axios'
-// import React, { useEffect, useState } from 'react'
-// import { toast } from 'react-toastify'
-
-// const DisplayStationery = ({url}) => {
-//   const [displayStationery , setDisplayStationery] = useState([])
-
-//   const fetchAllStationery = async () => {
-//     const response = await axios.get(`${url}/api/stationery/all-stationeryProduct`)
-//     console.log('stationery : ' , response.data)
-//     if (response.data.success) {
-//       setDisplayStationery(response.data.data)
-//     }else{
-//       toast.error('err')
-//     }
-//   }
-
-//   const removeStationery = async (stationeryId) => {
-//     // console.log("stationeryId" ,stationeryId)
-//     const response = await axios.post(`${url}/api/stationery/remove-stationeryProduct` , {id:stationeryId})
-//     await fetchAllStationery();
-//     if (response.data.success) {
-//       toast.success(response.data.success)
-//     }else{
-//       toast.error('error')
-//     }
-//   }
-
-//   useEffect(() => {
-//     fetchAllStationery()
-//   },[])
-
-//   return (
-//     <>
-//       <div>
-//         <h1>All stationey list</h1>
-//         <div>
-//           <div>
-//             <b>Image</b>
-//             <b>name</b>
-//             <b>category</b>
-//             <b>price</b>
-//             <b>action</b>
-//           </div>
-//           {
-//             displayStationery.map((item , index) => {
-//               return (
-//                 <div key={index}>
-//                   <img src={`${url}/images/`+item.image} alt='image'/>
-//                   <p>{item.name}</p>
-//                   <p>{item.category}</p>
-//                   <p>{item.price}</p>
-//                   <p onClick={() =>  removeStationery(item._id)}>X</p>
-//                 </div>
-//               )
-//             })
-//           }
-//         </div>
-//       </div>
-//     </>
-//   )
-// }
-
-// export default DisplayStationery
-
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { toast } from 'react-toastify';
@@ -73,7 +8,6 @@ const DisplayStationery = ({ url }) => {
     const fetchAllStationery = async () => {
         try {
             const response = await axios.get(`${url}/api/stationery/all-stationeryProduct`);
-            console.log('stationery: ', response.data);
             if (response.data.success) {
                 setDisplayStationery(response.data.data);
             } else {
