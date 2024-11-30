@@ -59,7 +59,7 @@ import AllMovies from './pages/AllMovies'
 import AllMovieBookings from './pages/AllMovieBookings'
 
 function App() {
-  const url = 'http://localhost:4000'
+  const url = 'https://cruise-ship-management.onrender.com'
 
   return (
     <>
