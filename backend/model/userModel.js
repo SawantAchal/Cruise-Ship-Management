@@ -7,6 +7,7 @@ const userSchema = new mongoose.Schema({
     password:{type:String , required:true },
     cartData:{type:Object , default:{}},
     bookedMovies:{type:Object , default:{}},
+    fitnessBookings: [{ type: mongoose.Schema.Types.ObjectId, ref: 'fitnessBooking' }],
     createdAt: { type: Date, default: Date.now, immutable: true }
 },{minimize:false})
 

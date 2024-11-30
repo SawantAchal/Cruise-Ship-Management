@@ -1,15 +1,14 @@
-import mongoose from "mongoose";
+import mongoose from 'mongoose';
 
-const movieBookingSchema = new mongoose.Schema({
-    userId: { type:String, required: true },
-    
-    movie: { type: String,  required: true },
-    showtime: { type: String, required: true },
-    seats: [{ type: String, required: true }],
-    total_amount: { type: Number, required: true },
-    date:{type:Date,default:Date.now},
-    payment:{type:Boolean,default:false},
-},{ timestamps: true });
+const bookingSchema = new mongoose.Schema({
+  movie: { type: mongoose.Schema.Types.ObjectId, ref: 'Movie', required: true },
+  user: { type: String, required: true },
+  showtime: { type: String, required: true },
+  seats: { type: Number, required: true },
+  totalAmount: { type: Number, required: true },
+  date: { type: Date, default: Date.now },
+  paymentStatus: { type: String, enum: ['Pending', 'Completed'], default: 'Pending' },
+});
 
-const movieBookingModel = mongoose.models.movieBooking || mongoose.model('movieBooking' , movieBookingSchema)
-export default movieBookingModel;
+const Booking = mongoose.models.MovieBooking || mongoose.model('MovieBooking', bookingSchema);
+export default Booking;

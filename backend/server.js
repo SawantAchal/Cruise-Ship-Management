@@ -7,9 +7,15 @@ import userRouter from './routes/userRoute.js';
 import dotenv from 'dotenv/config.js'
 import cartRouter from './routes/cartRoutes.js';
 import orderRouter from './routes/orderRoutes.js';
-import movieRouter from './routes/movieRoutes.js';
-import movieBookingRouter from './routes/movieBookingRoutes.js';
-import movieCartRouter from './routes/movieCartRoutes.js';
+import fitnessCenterRoute from './routes/fitnessCenterRoutes.js';
+import equipmentRoute from './routes/equipmentRoutes.js';
+import timeSlotRoute from './routes/timeSlotRoutes.js';
+import bookingRoute from './routes/bookingRoutes.js';
+import MovieRoutes from './routes/movieRoutes.js';
+import movieBookingRoutes from './routes/movieBookingRoutes.js';
+// import movieRoutes from './routes/movieRoutes.js';
+// import bookingRoutes from './routes/bookingRoutes.js';
+
 //App config
 const app = express()
 const port = 4000 ;
@@ -28,9 +34,13 @@ app.use('/images' , express.static('uploads'))
 app.use('/api/user' , userRouter)
 app.use('/api/cart',cartRouter)
 app.use('/api/order',orderRouter)
-app.use('/api/movie',movieRouter)
-app.use('/api/bookedMovie', movieBookingRouter)
-app.use('/api/movieCart', movieCartRouter)
+app.use('/api/fitnessCenter', fitnessCenterRoute)
+app.use('/api/equipment', equipmentRoute)
+app.use('/api/timeSlot', timeSlotRoute)
+app.use('/api/fitnessBooking', bookingRoute)
+app.use('/api/movies', MovieRoutes);
+app.use('/api/bookings', movieBookingRoutes);
+
 
 
 //request data from server

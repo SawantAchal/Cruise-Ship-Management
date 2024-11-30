@@ -1,11 +1,13 @@
-import express from 'express'
-import { listOfUserBookedMovie, movieBooking, usersBookedMovies } from '../controllers/movieBookingController.js'
-import authMiddleware from '../middleware/auth.js'
+import express from 'express';
+import { bookMovie, deleteBooking, getAllBookings, getBookingById, updateBookingStatus } from '../controllers/movieBookingController.js';
 
-const movieBookingRouter = express.Router()
 
-movieBookingRouter.post('/Book-movie' , authMiddleware,movieBooking )
-movieBookingRouter.post('/user-bookedmovie' , authMiddleware , usersBookedMovies)
-movieBookingRouter.get('/allusers-MoviedMovies' , listOfUserBookedMovie)
+const movieBookingRoutes = express.Router();
 
-export default movieBookingRouter
+movieBookingRoutes.post('/', bookMovie);
+movieBookingRoutes.get('/', getAllBookings);
+movieBookingRoutes.get('/:id', getBookingById);
+movieBookingRoutes.delete('/:id', deleteBooking);
+movieBookingRoutes.put('/:id', updateBookingStatus);
+
+export default movieBookingRoutes;
