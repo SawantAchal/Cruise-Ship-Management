@@ -20,7 +20,7 @@ const BookingManagement = ({url}) => {
 
   return (
     <div className="p-4">
-      <h1 className="text-2xl font-bold mb-4">Manage Bookings</h1>
+      <h1 className="text-2xl font-bold mb-4 ml-32">Manage Bookings</h1>
       <BookingList bookings={bookings} fetchBookings={fetchBookings} />
     </div>
   );
